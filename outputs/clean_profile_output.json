@@ -1,0 +1,67 @@
+{
+  "success": true,
+  "bureau_name": "CIBIL",
+  "applicant_name": "Rohan Mehta",
+  "credit_score": 782,
+  "total_accounts": 3,
+  "active_accounts": 2,
+  "total_outstanding": 325000.0,
+  "total_overdue": 0.0,
+  "total_emi_burden": 12500.0,
+  "credit_utilization_pct": 22.5,
+  "dpd_severity": "clean",
+  "credit_vintage_months": 99,
+  "enquiries_last_6_months": 1,
+  "risk_flags": {
+    "has_writeoff": {
+      "flagged": false,
+      "reason": "No written-off accounts"
+    },
+    "has_settlement": {
+      "flagged": false,
+      "reason": "No settled accounts"
+    },
+    "has_npa": {
+      "flagged": false,
+      "reason": "No NPA accounts"
+    },
+    "high_utilization": {
+      "flagged": false,
+      "reason": "Credit utilization at 22.5%, within acceptable range"
+    },
+    "recent_dpd": {
+      "flagged": false,
+      "reason": "No DPD in last 3 months"
+    },
+    "enquiry_surge": {
+      "flagged": false,
+      "reason": "1 enquiries in last 6 months, within threshold"
+    },
+    "thin_file": {
+      "flagged": false,
+      "reason": "2 active account(s), sufficient credit history"
+    },
+    "high_overdue": {
+      "flagged": false,
+      "reason": "No overdue amount across any account"
+    }
+  },
+  "consistency_notes": [
+    {
+      "observation": "The credit score of 782 is consistent with the clean DPD history and low credit utilization percentage of 22.5% across all accounts.",
+      "related_to": "overall",
+      "type": "context"
+    },
+    {
+      "observation": "There is a single enquiry in the last 6 months, which is within the threshold, and it is for a personal loan.",
+      "related_to": "enquiries",
+      "type": "pattern"
+    },
+    {
+      "observation": "Account ACC003, an auto loan, was closed 3 months ago after being active for 5 years, with no overdue amount or DPD history.",
+      "related_to": "ACC003",
+      "type": "context"
+    }
+  ],
+  "summary": "Rohan Mehta has a credit score of 782, with a credit vintage of 99 months and a mix of personal loan, credit card, and auto loan accounts. Currently, he has two active accounts, with a total outstanding amount of 325000.0 and a total EMI burden of 12500.0. His credit utilization is at 22.5%, which is within an acceptable range. There are no flagged risk items, such as write-offs, settlements, NPAs, high utilization, recent DPDs, enquiry surges, thin files, or high overdue amounts. The credit profile appears clean, with no DPD history across all accounts. Notably, there is a single enquiry in the last 6 months for a personal loan, which is within the threshold. Additionally, an auto loan account was closed 3 months ago after being active for 5 years, with no overdue amount or DPD history. The credit score is consistent with the clean DPD history and low credit utilization percentage."
+}

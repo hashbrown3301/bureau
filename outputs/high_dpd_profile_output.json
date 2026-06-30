@@ -1,0 +1,72 @@
+{
+  "success": true,
+  "bureau_name": "CIBIL",
+  "applicant_name": "Anjali Nair",
+  "credit_score": 540,
+  "total_accounts": 2,
+  "active_accounts": 1,
+  "total_outstanding": 370000.0,
+  "total_overdue": 53000.0,
+  "total_emi_burden": 11000.0,
+  "credit_utilization_pct": 40.0,
+  "dpd_severity": "severe",
+  "credit_vintage_months": 57,
+  "enquiries_last_6_months": 0,
+  "risk_flags": {
+    "has_writeoff": {
+      "flagged": false,
+      "reason": "No written-off accounts"
+    },
+    "has_settlement": {
+      "flagged": false,
+      "reason": "No settled accounts"
+    },
+    "has_npa": {
+      "flagged": true,
+      "reason": "1 account(s) classified NPA: ['ACC202']"
+    },
+    "high_utilization": {
+      "flagged": false,
+      "reason": "Credit utilization at 40.0%, within acceptable range"
+    },
+    "recent_dpd": {
+      "flagged": true,
+      "reason": "DPD reported in last 3 months on: ['ACC201', 'ACC202']"
+    },
+    "enquiry_surge": {
+      "flagged": false,
+      "reason": "0 enquiries in last 6 months, within threshold"
+    },
+    "thin_file": {
+      "flagged": true,
+      "reason": "Only 1 active account(s), below minimum of 2"
+    },
+    "high_overdue": {
+      "flagged": true,
+      "reason": "Total overdue amount: 53000.0"
+    }
+  },
+  "consistency_notes": [
+    {
+      "observation": "The credit score of 540 seems contradictory to the presence of an NPA account and recent DPD reported on two accounts.",
+      "related_to": "overall",
+      "type": "contradiction"
+    },
+    {
+      "observation": "The account ACC202 has been classified as NPA despite being opened over 4 years ago, indicating a possible long-standing issue.",
+      "related_to": "ACC202",
+      "type": "context"
+    },
+    {
+      "observation": "The recent DPD reported on both accounts ACC201 and ACC202 suggests a possible pattern of delinquency.",
+      "related_to": "overall",
+      "type": "pattern"
+    },
+    {
+      "observation": "The thin file risk flag is triggered due to only one active account, which may not provide a comprehensive view of the applicant's credit behavior.",
+      "related_to": "overall",
+      "type": "context"
+    }
+  ],
+  "summary": "Anjali Nair's credit profile shows a score of 540, with a credit vintage of 57 months and a mix of one personal loan and one credit card account. Currently, she has one active account with an EMI burden of 11,000 and a total outstanding amount of 370,000. Her credit utilization is at 40%, and she has a total overdue amount of 53,000. The risk flags indicate a non-performing asset (NPA) account, recent delinquent payments on both accounts, a thin credit file due to only one active account, and a high overdue amount. The consistency checks note a contradiction between the credit score and the presence of an NPA account and recent delinquencies, a possible long-standing issue with the NPA account, a pattern of delinquency on both accounts, and the potential limited view of credit behavior due to the thin file."
+}

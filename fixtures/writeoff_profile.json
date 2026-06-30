@@ -1,0 +1,71 @@
+{
+  "bureau_name": "CIBIL",
+  "report_date": "2026-06-15",
+  "applicant": {
+    "name": "Suresh Patil",
+    "pan": "BCDEF2345G",
+    "dob": "1985-09-22"
+  },
+  "credit_score": 615,
+  "accounts": [
+    {
+      "account_id": "ACC101",
+      "lender": "Bajaj Finance",
+      "account_type": "consumer_loan",
+      "sanctioned_amount": 45000,
+      "current_outstanding": 0,
+      "overdue_amount": 0,
+      "emi_amount": null,
+      "status_code": "LSS",
+      "opened_date": "2017-05-10",
+      "closed_date": "2018-01-20",
+      "dpd_current": 0,
+      "dpd_history": [],
+      "credit_limit": null
+    },
+    {
+      "account_id": "ACC102",
+      "lender": "HDFC Bank",
+      "account_type": "personal_loan",
+      "sanctioned_amount": 300000,
+      "current_outstanding": 150000,
+      "overdue_amount": 0,
+      "emi_amount": 9000,
+      "status_code": "STD",
+      "opened_date": "2022-04-01",
+      "closed_date": null,
+      "dpd_current": 0,
+      "dpd_history": [0,0,0,0,0,0,0,0,0,0,0,0],
+      "credit_limit": null
+    },
+    {
+      "account_id": "ACC103",
+      "lender": "Kotak Bank",
+      "account_type": "credit_card",
+      "sanctioned_amount": 100000,
+      "current_outstanding": 20000,
+      "overdue_amount": 0,
+      "emi_amount": null,
+      "status_code": "STD",
+      "opened_date": "2020-08-15",
+      "closed_date": null,
+      "dpd_current": 0,
+      "dpd_history": [0,0,0,0,0,0,0,0,0,0,0,0],
+      "credit_limit": 100000
+    }
+  ],
+  "enquiries": [
+    {
+      "enquiry_date": "2026-01-10",
+      "lender": "HDFC Bank",
+      "purpose": "personal_loan",
+      "amount": 150000
+    },
+    {
+      "enquiry_date": "2025-08-05",
+      "lender": "Kotak Bank",
+      "purpose": "credit_card",
+      "amount": 100000
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "bureau_name": "CIBIL",
+  "report_date": "2026-06-15",
+  "applicant": {
+    "name": "Priya Sharma",
+    "pan": "EFGHI5678J",
+    "dob": "1988-02-25"
+  },
+  "credit_score": 660,
+  "accounts": [
+    {
+      "account_id": "ACC401",
+      "lender": "Amex",
+      "account_type": "credit_card",
+      "sanctioned_amount": 300000,
+      "current_outstanding": 265000,
+      "overdue_amount": 0,
+      "emi_amount": null,
+      "status_code": "STD",
+      "opened_date": "2019-03-01",
+      "closed_date": null,
+      "dpd_current": 0,
+      "dpd_history": [0,0,0,0,0,0,0,0,0,0,0,0],
+      "credit_limit": 300000
+    },
+    {
+      "account_id": "ACC402",
+      "lender": "HDFC Bank",
+      "account_type": "personal_loan",
+      "sanctioned_amount": 600000,
+      "current_outstanding": 400000,
+      "overdue_amount": 0,
+      "emi_amount": 18000,
+      "status_code": "STD",
+      "opened_date": "2024-06-10",
+      "closed_date": null,
+      "dpd_current": 0,
+      "dpd_history": [0,0,0,0,0,0,0,0,0,0,0,0],
+      "credit_limit": null
+    }
+  ],
+  "enquiries": [
+    {
+      "enquiry_date": "2026-06-01",
+      "lender": "ICICI Bank",
+      "purpose": "personal_loan",
+      "amount": 200000
+    },
+    {
+      "enquiry_date": "2026-05-15",
+      "lender": "Axis Bank",
+      "purpose": "credit_card",
+      "amount": 100000
+    },
+    {
+      "enquiry_date": "2026-04-20",
+      "lender": "Kotak Bank",
+      "purpose": "personal_loan",
+      "amount": 150000
+    },
+    {
+      "enquiry_date": "2026-03-10",
+      "lender": "Bajaj Finance",
+      "purpose": "consumer_loan",
+      "amount": 75000
+    },
+    {
+      "enquiry_date": "2026-01-25",
+      "lender": "Tata Capital",
+      "purpose": "personal_loan",
+      "amount": 100000
+    }
+  ]
+}

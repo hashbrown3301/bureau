@@ -1,0 +1,65 @@
+{
+  "bureau_name": "CIBIL",
+  "report_date": "2026-06-15",
+  "applicant": {
+    "name": "Rohan Mehta",
+    "pan": "ABCDE1234F",
+    "dob": "1990-04-12"
+  },
+  "credit_score": 782,
+  "accounts": [
+    {
+      "account_id": "ACC001",
+      "lender": "HDFC Bank",
+      "account_type": "personal_loan",
+      "sanctioned_amount": 500000,
+      "current_outstanding": 280000,
+      "overdue_amount": 0,
+      "emi_amount": 12500,
+      "status_code": "STD",
+      "opened_date": "2023-01-10",
+      "closed_date": null,
+      "dpd_current": 0,
+      "dpd_history": [0,0,0,0,0,0,0,0,0,0,0,0],
+      "credit_limit": null
+    },
+    {
+      "account_id": "ACC002",
+      "lender": "ICICI Bank",
+      "account_type": "credit_card",
+      "sanctioned_amount": 200000,
+      "current_outstanding": 45000,
+      "overdue_amount": 0,
+      "emi_amount": null,
+      "status_code": "STD",
+      "opened_date": "2021-06-01",
+      "closed_date": null,
+      "dpd_current": 0,
+      "dpd_history": [0,0,0,0,0,0,0,0,0,0,0,0],
+      "credit_limit": 200000
+    },
+    {
+      "account_id": "ACC003",
+      "lender": "Axis Bank",
+      "account_type": "auto_loan",
+      "sanctioned_amount": 700000,
+      "current_outstanding": 0,
+      "overdue_amount": 0,
+      "emi_amount": null,
+      "status_code": "CLOSED",
+      "opened_date": "2018-03-15",
+      "closed_date": "2023-03-15",
+      "dpd_current": 0,
+      "dpd_history": [],
+      "credit_limit": null
+    }
+  ],
+  "enquiries": [
+    {
+      "enquiry_date": "2026-02-20",
+      "lender": "SBI",
+      "purpose": "personal_loan",
+      "amount": 100000
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "bureau_name": "CIBIL",
+  "report_date": "2026-06-15",
+  "applicant": {
+    "name": "Karan Joshi",
+    "pan": "DEFGH4567I",
+    "dob": "2001-07-18"
+  },
+  "credit_score": 720,
+  "accounts": [
+    {
+      "account_id": "ACC301",
+      "lender": "SBI Card",
+      "account_type": "credit_card",
+      "sanctioned_amount": 50000,
+      "current_outstanding": 5000,
+      "overdue_amount": 0,
+      "emi_amount": null,
+      "status_code": "STD",
+      "opened_date": "2025-09-01",
+      "closed_date": null,
+      "dpd_current": 0,
+      "dpd_history": [0,0,0,0,0,0,0,0,0],
+      "credit_limit": 50000
+    }
+  ],
+  "enquiries": [
+    {
+      "enquiry_date": "2026-04-10",
+      "lender": "SBI Card",
+      "purpose": "credit_card",
+      "amount": 50000
+    }
+  ]
+}

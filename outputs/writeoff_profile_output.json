@@ -1,0 +1,72 @@
+{
+  "success": true,
+  "bureau_name": "CIBIL",
+  "applicant_name": "Suresh Patil",
+  "credit_score": 615,
+  "total_accounts": 3,
+  "active_accounts": 2,
+  "total_outstanding": 170000.0,
+  "total_overdue": 0.0,
+  "total_emi_burden": 9000.0,
+  "credit_utilization_pct": 20.0,
+  "dpd_severity": "clean",
+  "credit_vintage_months": 109,
+  "enquiries_last_6_months": 1,
+  "risk_flags": {
+    "has_writeoff": {
+      "flagged": true,
+      "reason": "1 account(s) written off: ['ACC101']"
+    },
+    "has_settlement": {
+      "flagged": false,
+      "reason": "No settled accounts"
+    },
+    "has_npa": {
+      "flagged": false,
+      "reason": "No NPA accounts"
+    },
+    "high_utilization": {
+      "flagged": false,
+      "reason": "Credit utilization at 20.0%, within acceptable range"
+    },
+    "recent_dpd": {
+      "flagged": false,
+      "reason": "No DPD in last 3 months"
+    },
+    "enquiry_surge": {
+      "flagged": false,
+      "reason": "1 enquiries in last 6 months, within threshold"
+    },
+    "thin_file": {
+      "flagged": false,
+      "reason": "2 active account(s), sufficient credit history"
+    },
+    "high_overdue": {
+      "flagged": false,
+      "reason": "No overdue amount across any account"
+    }
+  },
+  "consistency_notes": [
+    {
+      "observation": "The credit score is 615, which is relatively moderate, but there is a written-off account (ACC101) from 2017-2018, which may be a point of consideration in the context of the overall credit history.",
+      "related_to": "overall",
+      "type": "context"
+    },
+    {
+      "observation": "Account ACC101 was written off in 2018, but it has been several years since then, and the applicant has two active accounts (ACC102 and ACC103) with no overdue amounts, which may indicate a recovery in credit behavior.",
+      "related_to": "ACC101",
+      "type": "context"
+    },
+    {
+      "observation": "There are two active accounts (ACC102 and ACC103) with no overdue amounts, and the credit utilization percentage is 20%, which is within the acceptable range, indicating a relatively stable credit situation.",
+      "related_to": "overall",
+      "type": "pattern"
+    },
+    {
+      "observation": "The enquiries in the last 6 months are minimal (1 enquiry), which may indicate a relatively low credit demand or inquiry surge.",
+      "related_to": "enquiries",
+      "type": "pattern"
+    }
+  ],
+  "summary": "Suresh Patil has a credit score of 615, with a credit vintage of 109 months, indicating a moderate credit profile. The account mix includes two active accounts, a personal loan with HDFC Bank and a credit card with Kotak Bank, and one closed account, a consumer loan with Bajaj Finance that was written off in 2018. The current outstanding amount is 170,000, with an EMI burden of 9,000 and a credit utilization percentage of 20%. There are no overdue amounts across any account. Risk flags indicate a written-off account, which may be a point of consideration. Consistency checks note that despite the written-off account, the applicant has shown recovery in credit behavior with two active accounts and no overdue amounts, and a relatively stable credit situation with minimal enquiries in the last 6 months. The credit utilization percentage is within the acceptable range, indicating a relatively stable credit situation. These observations provide context to the overall credit history and behavior of the applicant."
+}

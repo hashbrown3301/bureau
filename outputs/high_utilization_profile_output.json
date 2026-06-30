@@ -1,0 +1,77 @@
+{
+  "success": true,
+  "bureau_name": "CIBIL",
+  "applicant_name": "Priya Sharma",
+  "credit_score": 660,
+  "total_accounts": 2,
+  "active_accounts": 2,
+  "total_outstanding": 665000.0,
+  "total_overdue": 0.0,
+  "total_emi_burden": 18000.0,
+  "credit_utilization_pct": 88.33,
+  "dpd_severity": "clean",
+  "credit_vintage_months": 87,
+  "enquiries_last_6_months": 5,
+  "risk_flags": {
+    "has_writeoff": {
+      "flagged": false,
+      "reason": "No written-off accounts"
+    },
+    "has_settlement": {
+      "flagged": false,
+      "reason": "No settled accounts"
+    },
+    "has_npa": {
+      "flagged": false,
+      "reason": "No NPA accounts"
+    },
+    "high_utilization": {
+      "flagged": true,
+      "reason": "Credit utilization at 88.33%, exceeds 80.0% threshold"
+    },
+    "recent_dpd": {
+      "flagged": false,
+      "reason": "No DPD in last 3 months"
+    },
+    "enquiry_surge": {
+      "flagged": true,
+      "reason": "5 enquiries in last 6 months, exceeds threshold of 3"
+    },
+    "thin_file": {
+      "flagged": false,
+      "reason": "2 active account(s), sufficient credit history"
+    },
+    "high_overdue": {
+      "flagged": false,
+      "reason": "No overdue amount across any account"
+    }
+  },
+  "consistency_notes": [
+    {
+      "observation": "The credit utilization percentage is high at 88.33%, which may indicate a potential risk.",
+      "related_to": "overall",
+      "type": "context"
+    },
+    {
+      "observation": "There are multiple enquiries in the last 6 months, with 5 enquiries exceeding the threshold of 3, which may indicate a potential risk.",
+      "related_to": "enquiries",
+      "type": "pattern"
+    },
+    {
+      "observation": "The credit score is 660, which is relatively moderate, but there are no NPA accounts or write-offs, which is a positive sign.",
+      "related_to": "overall",
+      "type": "context"
+    },
+    {
+      "observation": "The account ACC401 has a high outstanding amount of 265000.0, but it is an active account with no overdue amount.",
+      "related_to": "ACC401",
+      "type": "context"
+    },
+    {
+      "observation": "The account ACC402 has a sanctioned amount of 600000.0 and a current outstanding of 400000.0, with an EMI amount of 18000.0, which may be a significant commitment.",
+      "related_to": "ACC402",
+      "type": "context"
+    }
+  ],
+  "summary": "Priya Sharma has a credit score of 660, with a credit vintage of 87 months and 2 active accounts, consisting of 1 credit card and 1 personal loan. The total outstanding amount is 665000.0, with a total EMI burden of 18000.0. The credit utilization percentage is high at 88.33%, exceeding the 80% threshold. There have been 5 enquiries in the last 6 months, which exceeds the threshold of 3. The risk flags indicate high utilization and enquiry surge, which may pose potential risks. The consistency notes highlight the high credit utilization and multiple enquiries as potential risks, but also note that there are no NPA accounts or write-offs, and the credit score is moderate. The active accounts have no overdue amounts, but the outstanding amounts are significant, particularly for account ACC401 with an outstanding amount of 265000.0 and account ACC402 with a sanctioned amount of 600000.0 and a current outstanding of 400000.0."
+}
