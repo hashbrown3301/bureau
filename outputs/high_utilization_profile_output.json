@@ -35,7 +35,7 @@
     },
     "enquiry_surge": {
       "flagged": true,
-      "reason": "5 enquiries in last 6 months, exceeds threshold of 3"
+      "reason": "5 enquiries from 5 different lenders in last 6 months, purposes: ['credit_card', 'consumer_loan', 'personal_loan']. Spread across multiple lenders suggests active credit seeking."
     },
     "thin_file": {
       "flagged": false,
@@ -48,30 +48,20 @@
   },
   "consistency_notes": [
     {
-      "observation": "The credit utilization percentage is high at 88.33%, which may indicate a potential risk.",
+      "observation": "The credit utilization percentage is high at 88.33%, which may be a point of consideration when viewed in the context of the overall credit profile.",
       "related_to": "overall",
       "type": "context"
     },
     {
-      "observation": "There are multiple enquiries in the last 6 months, with 5 enquiries exceeding the threshold of 3, which may indicate a potential risk.",
+      "observation": "There have been multiple enquiries in the last 6 months, with 5 different lenders and various purposes, indicating active credit seeking behavior.",
       "related_to": "enquiries",
       "type": "pattern"
     },
     {
-      "observation": "The credit score is 660, which is relatively moderate, but there are no NPA accounts or write-offs, which is a positive sign.",
+      "observation": "The credit score of 660 seems relatively high given the high credit utilization and recent enquiry surge.",
       "related_to": "overall",
-      "type": "context"
-    },
-    {
-      "observation": "The account ACC401 has a high outstanding amount of 265000.0, but it is an active account with no overdue amount.",
-      "related_to": "ACC401",
-      "type": "context"
-    },
-    {
-      "observation": "The account ACC402 has a sanctioned amount of 600000.0 and a current outstanding of 400000.0, with an EMI amount of 18000.0, which may be a significant commitment.",
-      "related_to": "ACC402",
-      "type": "context"
+      "type": "contradiction"
     }
   ],
-  "summary": "Priya Sharma has a credit score of 660, with a credit vintage of 87 months and 2 active accounts, consisting of 1 credit card and 1 personal loan. The total outstanding amount is 665000.0, with a total EMI burden of 18000.0. The credit utilization percentage is high at 88.33%, exceeding the 80% threshold. There have been 5 enquiries in the last 6 months, which exceeds the threshold of 3. The risk flags indicate high utilization and enquiry surge, which may pose potential risks. The consistency notes highlight the high credit utilization and multiple enquiries as potential risks, but also note that there are no NPA accounts or write-offs, and the credit score is moderate. The active accounts have no overdue amounts, but the outstanding amounts are significant, particularly for account ACC401 with an outstanding amount of 265000.0 and account ACC402 with a sanctioned amount of 600000.0 and a current outstanding of 400000.0."
+  "summary": "Priya Sharma has a credit score of 660, with a credit vintage of 87 months and a mix of 2 active accounts, including 1 credit card and 1 personal loan. The total outstanding amount is 665,000, with a total EMI burden of 18,000. The credit utilization percentage is high at 88.33%. There are no overdue amounts or write-offs. However, there are risk flags for high utilization and recent enquiry surge, with 5 enquiries from different lenders in the last 6 months. The consistency notes highlight the high credit utilization, active credit seeking behavior, and a potential contradiction between the credit score and the high utilization and enquiry surge. The credit profile shows a clean DPD history and no settled or NPA accounts. The applicant has been actively seeking credit, with enquiries for personal loans, credit cards, and consumer loans."
 }

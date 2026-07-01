@@ -65,6 +65,8 @@ class CanonicalBureauReport(BaseModel):
 
     accounts: list[Account] = Field(default_factory=list)
     enquiries: list[Enquiry] = Field(default_factory=list)
+    unique_lenders_last_6_months: int = 0
+    enquiry_purposes_last_6_months: list[str] = Field(default_factory=list)
 
     # --- Derived fields: populated by metrics engine, NEVER by LLM ---
     total_accounts: int = 0

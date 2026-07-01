@@ -1,0 +1,67 @@
+{
+  "success": true,
+  "bureau_name": "CIBIL",
+  "applicant_name": "Vikram Desai",
+  "credit_score": 748,
+  "total_accounts": 2,
+  "active_accounts": 2,
+  "total_outstanding": 250000.0,
+  "total_overdue": 0.0,
+  "total_emi_burden": 11000.0,
+  "credit_utilization_pct": 20.0,
+  "dpd_severity": "clean",
+  "credit_vintage_months": 73,
+  "enquiries_last_6_months": 5,
+  "risk_flags": {
+    "has_writeoff": {
+      "flagged": false,
+      "reason": "No written-off accounts"
+    },
+    "has_settlement": {
+      "flagged": false,
+      "reason": "No settled accounts"
+    },
+    "has_npa": {
+      "flagged": false,
+      "reason": "No NPA accounts"
+    },
+    "high_utilization": {
+      "flagged": false,
+      "reason": "Credit utilization at 20.0%, within acceptable range"
+    },
+    "recent_dpd": {
+      "flagged": false,
+      "reason": "No DPD in last 3 months"
+    },
+    "enquiry_surge": {
+      "flagged": false,
+      "reason": "5 enquiries in last 6 months but only from 1 lender(s) -- likely one application being processed, not active credit seeking."
+    },
+    "thin_file": {
+      "flagged": false,
+      "reason": "2 active account(s), sufficient credit history"
+    },
+    "high_overdue": {
+      "flagged": false,
+      "reason": "No overdue amount across any account"
+    }
+  },
+  "consistency_notes": [
+    {
+      "observation": "The applicant has a high number of enquiries from the same lender for the same purpose within a short period, which may indicate a single application being processed.",
+      "related_to": "enquiries",
+      "type": "pattern"
+    },
+    {
+      "observation": "The credit utilization percentage is 20.0%, which is within the acceptable range, and there are no overdue amounts across any account.",
+      "related_to": "overall",
+      "type": "context"
+    },
+    {
+      "observation": "The applicant has a long credit vintage of 73 months with no written-off, settled, or NPA accounts, and no recent DPD.",
+      "related_to": "overall",
+      "type": "context"
+    }
+  ],
+  "summary": "Vikram Desai has a credit score of 748 with a credit vintage of 73 months, indicating a well-established credit history. The credit profile consists of two active accounts, including a personal loan and a credit card, with a total outstanding amount of 250,000 and a total EMI burden of 11,000. The credit utilization percentage is 20%, which is within the acceptable range. There are no overdue amounts across any account. The risk flags do not indicate any high-risk items, such as written-off accounts, settlements, or high utilization. However, there have been five enquiries from the same lender for the same purpose within the last six months, which may indicate a single application being processed. The consistency checks highlight the applicant's long credit history with no adverse events and a stable credit utilization percentage. Overall, the credit profile appears to be stable, with no recent delinquencies or high-risk behavior."
+}

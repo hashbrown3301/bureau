@@ -35,7 +35,7 @@
     },
     "enquiry_surge": {
       "flagged": false,
-      "reason": "1 enquiries in last 6 months, within threshold"
+      "reason": "1 enquiries in last 6 months, within threshold."
     },
     "thin_file": {
       "flagged": true,
@@ -46,6 +46,22 @@
       "reason": "No overdue amount across any account"
     }
   },
-  "consistency_notes": [],
-  "summary": "Karan Joshi's credit profile, as per the CIBIL report dated 2026-06-15, shows a credit score of 720 with a credit vintage of 9 months. The account mix consists of 1 active credit card account with SBI Card, having a sanctioned amount and credit limit of 50,000. The current outstanding amount is 5,000, with no overdue amount. The total EMI burden is 0, and the credit utilization percentage is 10%, which is within the acceptable range. There are no risk flags for write-offs, settlements, NPAs, high utilization, recent DPDs, or high overdues. However, the thin file risk flag is raised due to only 1 active account, which is below the minimum of 2. There is 1 enquiry in the last 6 months, which is within the threshold. The credit profile indicates a relatively new credit history with minimal activity."
+  "consistency_notes": [
+    {
+      "observation": "The applicant has a thin file with only 1 active account, which may indicate limited credit history.",
+      "related_to": "overall",
+      "type": "context"
+    },
+    {
+      "observation": "The credit utilization percentage is 10.0%, which is within the acceptable range, and the account status is active with no overdue amount.",
+      "related_to": "ACC301",
+      "type": "context"
+    },
+    {
+      "observation": "There is only one enquiry in the last 6 months, which is within the threshold, and it is for a credit card purpose.",
+      "related_to": "enquiries",
+      "type": "pattern"
+    }
+  ],
+  "summary": "Karan Joshi has a credit score of 720, with a credit vintage of 9 months. The account mix consists of one active credit card account with SBI Card, having a sanctioned amount and credit limit of 50,000. The current outstanding amount is 5,000, with no overdue amount. The credit utilization percentage is 10%, which is within the acceptable range. There are no EMIs being paid. The risk flags indicate a thin file, as there is only one active account, which may suggest limited credit history. However, there are no other risk flags, such as write-offs, settlements, NPAs, high utilization, recent DPDs, or high overdue amounts. Consistency checks note that the applicant has a limited credit history, but the credit utilization and account status are within acceptable ranges, and the single enquiry in the last 6 months is for a credit card purpose."
 }

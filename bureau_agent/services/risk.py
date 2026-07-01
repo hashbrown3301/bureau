@@ -15,6 +15,7 @@ from .schema import AccountStatus, CanonicalBureauReport, DPDSeverity, RiskFlag
 # confirm against actual lending policy before production use) ---
 HIGH_UTILIZATION_THRESHOLD_PCT = 80.0
 ENQUIRY_SURGE_THRESHOLD = 3          # more than this many enquiries in 6 months
+ENQUIRY_SURGE_UNIQUE_LENDER_THRESHOLD = 2  # more than this = genuinely spread across lenders
 THIN_FILE_MIN_ACTIVE_ACCOUNTS = 2    # fewer than this = thin file
 RECENT_DPD_LOOKBACK_MONTHS = 3       # any DPD > 0 within this many months = recent
 
@@ -100,17 +101,35 @@ def compute_risk_indicators(report: CanonicalBureauReport) -> CanonicalBureauRep
         ),
     )
 
-    # --- Enquiry surge ---
-    enquiry_surge = report.enquiries_last_6_months > ENQUIRY_SURGE_THRESHOLD
-    flags["enquiry_surge"] = RiskFlag(
-        flagged=enquiry_surge,
-        reason=(
-            f"{report.enquiries_last_6_months} enquiries in last 6 months, "
-            f"exceeds threshold of {ENQUIRY_SURGE_THRESHOLD}"
-            if enquiry_surge
-            else f"{report.enquiries_last_6_months} enquiries in last 6 months, within threshold"
-        ),
-    )
+    # --- Enquiry surge (smarter: considers unique lenders + purpose concentration) ---
+    # Same lender multiple times = likely one application being processed (low risk)
+    # Multiple lenders = actively seeking credit from different sources (higher risk)
+    raw_count = report.enquiries_last_6_months
+    unique_lenders = report.unique_lenders_last_6_months
+    purposes = report.enquiry_purposes_last_6_months
+
+    spread = raw_count > ENQUIRY_SURGE_THRESHOLD and unique_lenders > ENQUIRY_SURGE_UNIQUE_LENDER_THRESHOLD
+    concentrated = raw_count > ENQUIRY_SURGE_THRESHOLD and unique_lenders <= ENQUIRY_SURGE_UNIQUE_LENDER_THRESHOLD
+
+    if spread:
+        enquiry_surge = True
+        reason = (
+            f"{raw_count} enquiries from {unique_lenders} different lenders "
+            f"in last 6 months, purposes: {purposes}. "
+            f"Spread across multiple lenders suggests active credit seeking."
+        )
+    elif concentrated:
+        enquiry_surge = False
+        reason = (
+            f"{raw_count} enquiries in last 6 months but only from "
+            f"{unique_lenders} lender(s) -- likely one application being processed, "
+            f"not active credit seeking."
+        )
+    else:
+        enquiry_surge = False
+        reason = f"{raw_count} enquiries in last 6 months, within threshold."
+
+    flags["enquiry_surge"] = RiskFlag(flagged=enquiry_surge, reason=reason)
 
     # --- Thin file ---
     thin_file = report.active_accounts < THIN_FILE_MIN_ACTIVE_ACCOUNTS

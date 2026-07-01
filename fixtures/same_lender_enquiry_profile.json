@@ -1,0 +1,74 @@
+{
+  "bureau_name": "CIBIL",
+  "report_date": "2026-06-15",
+  "applicant": {
+    "name": "Vikram Desai",
+    "pan": "FGHIJ6789K",
+    "dob": "1987-03-14"
+  },
+  "credit_score": 748,
+  "accounts": [
+    {
+      "account_id": "ACC501",
+      "lender": "ICICI Bank",
+      "account_type": "personal_loan",
+      "sanctioned_amount": 400000,
+      "current_outstanding": 220000,
+      "overdue_amount": 0,
+      "emi_amount": 11000,
+      "status_code": "STD",
+      "opened_date": "2022-08-01",
+      "closed_date": null,
+      "dpd_current": 0,
+      "dpd_history": [0,0,0,0,0,0,0,0,0,0,0,0],
+      "credit_limit": null
+    },
+    {
+      "account_id": "ACC502",
+      "lender": "Axis Bank",
+      "account_type": "credit_card",
+      "sanctioned_amount": 150000,
+      "current_outstanding": 30000,
+      "overdue_amount": 0,
+      "emi_amount": null,
+      "status_code": "STD",
+      "opened_date": "2020-05-10",
+      "closed_date": null,
+      "dpd_current": 0,
+      "dpd_history": [0,0,0,0,0,0,0,0,0,0,0,0],
+      "credit_limit": 150000
+    }
+  ],
+  "enquiries": [
+    {
+      "enquiry_date": "2026-06-01",
+      "lender": "ICICI Bank",
+      "purpose": "home_loan",
+      "amount": 5000000
+    },
+    {
+      "enquiry_date": "2026-05-20",
+      "lender": "ICICI Bank",
+      "purpose": "home_loan",
+      "amount": 5000000
+    },
+    {
+      "enquiry_date": "2026-05-10",
+      "lender": "ICICI Bank",
+      "purpose": "home_loan",
+      "amount": 5000000
+    },
+    {
+      "enquiry_date": "2026-04-28",
+      "lender": "ICICI Bank",
+      "purpose": "home_loan",
+      "amount": 5000000
+    },
+    {
+      "enquiry_date": "2026-04-15",
+      "lender": "ICICI Bank",
+      "purpose": "home_loan",
+      "amount": 5000000
+    }
+  ]
+}

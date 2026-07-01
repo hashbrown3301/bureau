@@ -35,7 +35,7 @@
     },
     "enquiry_surge": {
       "flagged": false,
-      "reason": "1 enquiries in last 6 months, within threshold"
+      "reason": "1 enquiries in last 6 months, within threshold."
     },
     "thin_file": {
       "flagged": false,
@@ -48,25 +48,25 @@
   },
   "consistency_notes": [
     {
-      "observation": "The credit score is 615, which is relatively moderate, but there is a written-off account (ACC101) from 2017-2018, which may be a point of consideration in the context of the overall credit history.",
+      "observation": "The credit score is 615, which is relatively moderate, and there is a written-off account (ACC101) from 2017, but it has been closed since 2018.",
       "related_to": "overall",
       "type": "context"
     },
     {
-      "observation": "Account ACC101 was written off in 2018, but it has been several years since then, and the applicant has two active accounts (ACC102 and ACC103) with no overdue amounts, which may indicate a recovery in credit behavior.",
-      "related_to": "ACC101",
-      "type": "context"
-    },
-    {
-      "observation": "There are two active accounts (ACC102 and ACC103) with no overdue amounts, and the credit utilization percentage is 20%, which is within the acceptable range, indicating a relatively stable credit situation.",
-      "related_to": "overall",
+      "observation": "There is a recent active personal loan account (ACC102) with a significant outstanding amount, but the account has a clean DPD history.",
+      "related_to": "ACC102",
       "type": "pattern"
     },
     {
-      "observation": "The enquiries in the last 6 months are minimal (1 enquiry), which may indicate a relatively low credit demand or inquiry surge.",
+      "observation": "The credit utilization percentage is 20%, which is within the acceptable range, and the credit vintage is 109 months, indicating a relatively long credit history.",
+      "related_to": "overall",
+      "type": "context"
+    },
+    {
+      "observation": "There is only one enquiry in the last 6 months, which is for a personal loan, and the total number of unique lenders in the last 6 months is 1.",
       "related_to": "enquiries",
       "type": "pattern"
     }
   ],
-  "summary": "Suresh Patil has a credit score of 615, with a credit vintage of 109 months, indicating a moderate credit profile. The account mix includes two active accounts, a personal loan with HDFC Bank and a credit card with Kotak Bank, and one closed account, a consumer loan with Bajaj Finance that was written off in 2018. The current outstanding amount is 170,000, with an EMI burden of 9,000 and a credit utilization percentage of 20%. There are no overdue amounts across any account. Risk flags indicate a written-off account, which may be a point of consideration. Consistency checks note that despite the written-off account, the applicant has shown recovery in credit behavior with two active accounts and no overdue amounts, and a relatively stable credit situation with minimal enquiries in the last 6 months. The credit utilization percentage is within the acceptable range, indicating a relatively stable credit situation. These observations provide context to the overall credit history and behavior of the applicant."
+  "summary": "Suresh Patil has a credit score of 615, with a credit vintage of 109 months, indicating a relatively long credit history. The account mix includes two active accounts, a personal loan with HDFC Bank and a credit card with Kotak Bank, and one closed account, a consumer loan with Bajaj Finance that was written off in 2018. The current outstanding amount is 170,000, with an EMI burden of 9,000. The credit utilization percentage is 20%, which is within the acceptable range. There are risk flags for a written-off account, but no flags for settlement, NPA, high utilization, recent DPD, enquiry surge, thin file, or high overdue. Consistency checks note the moderate credit score, the written-off account, and the clean DPD history of the recent personal loan account. Additionally, the credit utilization percentage and credit vintage are within acceptable ranges, and there is only one enquiry in the last 6 months."
 }

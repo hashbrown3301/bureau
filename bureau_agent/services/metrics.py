@@ -63,6 +63,24 @@ def _enquiries_in_last_n_months(report, n: int) -> int:
     return count
 
 
+def _recent_enquiry_details(report, n: int) -> tuple[int, list[str]]:
+    """
+    Returns (unique_lender_count, unique_purposes_list) for enquiries
+    in the last n months. Used by risk.py for smarter enquiry surge detection.
+    """
+    recent = []
+    for enq in report.enquiries:
+        if enq.enquiry_date is None:
+            continue
+        months_ago = _months_between(enq.enquiry_date, report.report_date)
+        if 0 <= months_ago <= n:
+            recent.append(enq)
+
+    unique_lenders = len(set(e.lender for e in recent))
+    unique_purposes = list(set(e.purpose for e in recent))
+    return unique_lenders, unique_purposes
+
+
 def compute_metrics(report: CanonicalBureauReport) -> CanonicalBureauReport:
     """
     Computes and populates all derived fields on the canonical report.
@@ -115,5 +133,10 @@ def compute_metrics(report: CanonicalBureauReport) -> CanonicalBureauReport:
 
     # --- Enquiries in last 6 months ---
     report.enquiries_last_6_months = _enquiries_in_last_n_months(report, n=6)
+
+    # --- Unique lenders + purposes in last 6 months (for smarter surge detection) ---
+    report.unique_lenders_last_6_months, report.enquiry_purposes_last_6_months = (
+        _recent_enquiry_details(report, n=6)
+    )
 
     return report
