@@ -10,10 +10,14 @@ from pathlib import Path
 import streamlit as st
 from dotenv import load_dotenv
 
-# Load .env before anything else
 load_dotenv()
 
+# Streamlit Cloud stores secrets separately -- pull into environment
+if "GROQ_API_KEY" in st.secrets:
+    os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
+
 from bureau_agent.agent import create_bureau_agent
+
 
 # --- Page config ---
 st.set_page_config(
