@@ -72,6 +72,11 @@ with st.sidebar:
     st.divider()
     run_button = st.button("Run Analysis", type="primary", use_container_width=True)
 
+    st.divider()
+    # --- Other Agents ---
+    st.header("Other Agents")
+    st.markdown("[Fraud and Risk Agent](https://fraud-and-risk-agent-cr.streamlit.app/)")
+
 # --- Run agent ---
 if run_button:
     if not raw_json or not raw_json.strip():
