@@ -76,6 +76,7 @@ with st.sidebar:
     # --- Other Agents ---
     st.header("Other Agents")
     st.markdown("[Fraud and Risk Agent](https://fraud-and-risk-agent-cr.streamlit.app/)")
+    st.markdown("[Lead scoring agent](https://lead-score-agent.streamlit.app)")
 
 # --- Run agent ---
 if run_button:
