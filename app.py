@@ -77,7 +77,8 @@ with st.sidebar:
     st.header("Other Agents")
     st.markdown("[Fraud and Risk Agent](https://fraud-and-risk-agent-cr.streamlit.app/)")
     st.markdown("[Lead scoring agent](https://lead-score-agent.streamlit.app)")
-
+    st.markdown("[KYC deduplication](https://kyc-deduplication.netlify.app/)")
+    st.markdown("[Bank statement agent](https://bankstatementagent.streamlit.app/)")
 # --- Run agent ---
 if run_button:
     if not raw_json or not raw_json.strip():
