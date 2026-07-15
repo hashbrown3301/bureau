@@ -80,6 +80,7 @@ with st.sidebar:
     st.markdown("[KYC deduplication](https://kyc-deduplication.netlify.app/)")
     st.markdown("[Bank statement agent](https://bankstatementagent.streamlit.app/)")
     st.markdown("[eKYC verification agent](https://face-match.auremoai.site/)")
+    st.markdown("[Document verification agent](https://doc-verification-agent.auremoai.site/)")
 
 # --- Run agent ---
 if run_button:
