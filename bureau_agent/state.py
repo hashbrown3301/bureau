@@ -24,6 +24,9 @@ class BureauAgentState(TypedDict, total=False):
     consistency_notes: list[dict[str, str]]  # list of {observation, related_to, type}
     summary: str
 
+    # --- PD Question Engine (BRE, deterministic) ---
+    pd_questionnaire: list[dict[str, Any]]   # list of PDQuestion.model_dump()
+
     # --- Final output ---
     final_output: dict[str, Any]
     error: str | None

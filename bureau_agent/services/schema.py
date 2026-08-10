@@ -55,6 +55,16 @@ class RiskFlag(BaseModel):
     flagged: bool
     reason: str
 
+class PDQuestion(BaseModel):
+    question: str
+    category: str          # credit_history | repayment_behavior | credit_seeking | utilization | file_thickness
+    reason: str             # the risk_flags reason string that triggered this question
+    priority: int            # 1 = most urgent, ask first
+    source_flag: str        # which risk_flags key produced this question
+    display_question: Optional[str] = None 
+    is_llm_generated: bool = False   # NEW -- False = BRE rule, True = LLM-suggested
+
+
 
 class CanonicalBureauReport(BaseModel):
     bureau_name: str

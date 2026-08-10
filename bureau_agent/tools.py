@@ -14,7 +14,11 @@ import os
 
 from langchain_groq import ChatGroq
 
-from .prompts import CONSISTENCY_CHECK_PROMPT, SUMMARY_PROMPT
+from .prompts import (
+    CONSISTENCY_CHECK_PROMPT, SUMMARY_PROMPT,
+    PD_QUESTION_REWRITE_PROMPT, SUPPLEMENTARY_PD_QUESTIONS_PROMPT,
+)
+
 
 GROQ_MODEL = "llama-3.3-70b-versatile"  # adjust to whichever Groq model you're targeting
 
@@ -68,6 +72,98 @@ def run_consistency_check(canonical_report_json: str) -> list[dict[str, str]]:
     except Exception:
         # Consistency check is supplementary, never block the pipeline on it
         return []
+
+
+def rewrite_pd_questions(questions: list[dict]) -> list[dict]:
+    """
+    Calls the LLM to rephrase each PD question conversationally.
+    Returns the same list with `display_question` populated on each item.
+    Fail-safe: on any failure (API error, malformed JSON, count mismatch),
+    falls back to using the original `question` text as `display_question`
+    for every item -- the pipeline never breaks on this step.
+    """
+    if not questions:
+        return questions
+
+    # fallback default: display_question = question, in case rewrite fails
+    for q in questions:
+        q["display_question"] = q["question"]
+
+    try:
+        payload = [
+            {"index": i, "question": q["question"]}
+            for i, q in enumerate(questions)
+        ]
+        llm = _get_llm(temperature=0.3)
+        prompt = PD_QUESTION_REWRITE_PROMPT.format(
+            questions_json=json.dumps(payload)
+        )
+        response = llm.invoke(prompt)
+        cleaned = _clean_json_response(response.content)
+        parsed = json.loads(cleaned)
+
+        if not isinstance(parsed, list) or len(parsed) != len(questions):
+            return questions  # fallback already applied above
+
+        for item in parsed:
+            idx = item.get("index")
+            rewritten = item.get("rewritten")
+            if isinstance(idx, int) and 0 <= idx < len(questions) and rewritten:
+                questions[idx]["display_question"] = str(rewritten)[:500]
+
+        return questions
+
+    except Exception:
+        # rewrite is cosmetic -- never block the pipeline on it
+        return questions
+
+
+def generate_supplementary_pd_questions(
+    canonical_report_json: str,
+    consistency_notes: list[dict],
+    already_asked: list[dict],
+) -> list[dict]:
+    """
+    LLM gap-filler: suggests PD questions for anything the fixed BRE rules
+    didn't cover. Fail-safe -- returns [] on any error, never blocks the
+    pipeline. Every returned question is tagged is_llm_generated=True
+    downstream so it's never confused with a policy-mandated question.
+    """
+    try:
+        llm = _get_llm(temperature=0.2)
+        already_asked_summary = [
+            {"question": q["question"], "category": q["category"]}
+            for q in already_asked
+        ]
+        prompt = SUPPLEMENTARY_PD_QUESTIONS_PROMPT.format(
+            already_asked_json=json.dumps(already_asked_summary),
+            canonical_report_json=canonical_report_json,
+            consistency_notes_json=json.dumps(consistency_notes),
+        )
+        response = llm.invoke(prompt)
+        cleaned = _clean_json_response(response.content)
+        parsed = json.loads(cleaned)
+
+        if not isinstance(parsed, list):
+            return []
+
+        valid = []
+        for item in parsed[:4]:  # hard cap, even if the model ignores the instruction
+            if isinstance(item, dict) and "question" in item:
+                valid.append({
+                    "question": str(item.get("question", ""))[:500],
+                    "display_question": str(item.get("question", ""))[:500],
+                    "category": str(item.get("category", "other")),
+                    "reason": str(item.get("reason", ""))[:300],
+                    "priority": 3,  # supplementary questions default to medium priority
+                    "source_flag": "llm_supplementary",
+                    "is_llm_generated": True,
+                })
+        return valid
+
+    except Exception:
+        return []
+
 
 
 def generate_summary(report_with_flags_json: str) -> str:

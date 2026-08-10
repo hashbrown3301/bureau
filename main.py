@@ -61,6 +61,16 @@ def print_result_summary(fixture_name: str, output: dict) -> None:
     for note in output.get("consistency_notes", []):
         print(f"  - [{note['type']}] ({note['related_to']}): {note['observation']}")
 
+    print(f"\nPD Questionnaire: {len(output.get('pd_questionnaire', []))}")
+    for q in output.get("pd_questionnaire", []):
+        print(f"  [P{q['priority']}] ({q['category']}) {q['question']}")
+
+    print(f"\nPD Questionnaire: {len(output.get('pd_questionnaire', []))}")
+    for q in output.get("pd_questionnaire", []):
+        print(f"  [P{q['priority']}] ({q['category']})")
+        print(f"    Rule text: {q['question']}")
+        print(f"    Display:   {q.get('display_question', q['question'])}")
+
     print(f"\nSummary:\n{output.get('summary', '')}")
 
 

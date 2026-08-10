@@ -13,8 +13,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Streamlit Cloud stores secrets separately -- pull into environment
-if "GROQ_API_KEY" in st.secrets:
-    os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
+try:
+    if "GROQ_API_KEY" in st.secrets:
+        os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
+except FileNotFoundError:
+    pass  # no secrets.toml -- fine locally, GROQ_API_KEY should come from .env instead
 
 from bureau_agent.agent import create_bureau_agent
 
@@ -170,6 +173,32 @@ if run_button:
                 st.info(f"**{note_type}** ({related_to}) -- {observation}")
     else:
         st.info("No consistency observations -- profile appears straightforward.")
+
+    st.divider()
+
+
+    st.subheader("PD Interview Questionnaire")
+    pd_questions = output.get("pd_questionnaire", [])
+    rule_based = [q for q in pd_questions if not q.get("is_llm_generated")]
+    ai_suggested = [q for q in pd_questions if q.get("is_llm_generated")]
+
+    if rule_based:
+        st.markdown("**Policy-mandated questions**")
+        for q in rule_based:
+            display_text = q.get("display_question", q["question"])
+            st.warning(f"**[P{q['priority']}] {q['category'].replace('_', ' ').title()}** — {display_text}")
+            with st.expander("View rule-engine detail"):
+                st.caption(f"Original rule text: {q['question']}")
+                st.caption(f"Triggered by: {q['reason']}")
+                st.caption(f"Source flag: `{q['source_flag']}`")
+
+    if ai_suggested:
+        st.markdown("**AI-suggested questions** _(not policy-mandated — reviewer discretion)_")
+        for q in ai_suggested:
+            st.info(f"**{q['category'].replace('_', ' ').title()}** — {q['question']}\n\n*Why: {q['reason']}*")
+
+    if not pd_questions:
+        st.success("No PD questions triggered — clean profile.")
 
     st.divider()
 

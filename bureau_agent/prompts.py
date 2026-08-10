@@ -79,6 +79,92 @@ If there is nothing noteworthy, return an empty array: []
 {canonical_report_json}
 """
 
+PD_QUESTION_REWRITE_PROMPT = """\
+=== ROLE ===
+You are rephrasing a set of pre-approved PD (Personal Discussion) interview
+questions so they sound natural and conversational when an underwriter reads
+them aloud to a loan applicant. You are NOT deciding what to ask -- these
+questions were already selected by a rules engine based on the applicant's
+credit report. Your only job is wording.
+
+=== RULES ===
+- Do NOT change the meaning, subject, or intent of any question
+- Do NOT add new questions or remove any question
+- Do NOT soften or remove any specific detail that matters (lender names,
+  amounts, percentages, timeframes) -- keep them, just phrase naturally
+- Do NOT make the tone accusatory or judgmental -- neutral and professional,
+  as one human asking another for context
+- Keep each question to a single sentence or two, suitable to be read
+  aloud in a live conversation
+- Preserve the original array order and the "index" field exactly
+
+=== OUTPUT FORMAT ===
+Return ONLY a valid JSON array, no markdown, no commentary, no backticks.
+Same length and same order as the input. Each item:
+{{
+  "index": <int, matches input>,
+  "rewritten": "<conversational version of the question>"
+}}
+
+=== INPUT QUESTIONS ===
+{questions_json}
+"""
+
+SUPPLEMENTARY_PD_QUESTIONS_PROMPT = """\
+=== ROLE ===
+You are supporting a loan underwriter's Personal Discussion (PD) interview.
+A rules engine has already generated a fixed set of PD questions from
+known risk flags -- those are listed below as ALREADY_ASKED. Your job is
+to spot anything unusual, inconsistent, or worth clarifying in the data
+that the fixed rules did NOT already cover.
+
+=== DATA YOU DO NOT HAVE ===
+No income or employment data. Do not ask about affordability, or whether
+any amount is "high" or "low" relative to income -- that is out of scope.
+
+=== YOUR JOB ===
+Look at the full canonical report, risk flags, and consistency-check
+observations. Suggest ADDITIONAL PD questions ONLY for things not already
+covered by ALREADY_ASKED. Examples of valid new questions:
+- Multiple loans opened in a short window (possible stacking) even if no
+  flag exists for it
+- An account type or lender pattern that looks unusual for this applicant
+- A consistency-check observation that implies a question worth asking
+  but wasn't turned into one
+- A contradiction between credit score and account-level detail
+
+=== MUST NOT ===
+- MUST NOT duplicate or rephrase anything in ALREADY_ASKED
+- MUST NOT ask about income, affordability, or EMI burden being high/low
+- MUST NOT recommend approval, rejection, or eligibility
+- MUST NOT invent accounts, lenders, or figures not present in the input
+- MUST NOT ask more than 4 supplementary questions -- if there's nothing
+  genuinely new to ask, return fewer, including zero
+
+=== WHEN TO RETURN NOTHING ===
+If the fixed rule-based questions already cover everything notable, return
+an empty array. Do not manufacture questions to seem thorough.
+
+=== OUTPUT FORMAT ===
+Return ONLY a valid JSON array, no markdown, no commentary, no backticks.
+Each item:
+{{
+  "question": "<the question, phrased naturally>",
+  "category": "<credit_history | repayment_behavior | credit_seeking | utilization | file_thickness | other>",
+  "reason": "<what in the data prompted this, one sentence>"
+}}
+
+=== ALREADY_ASKED ===
+{already_asked_json}
+
+=== INPUT DATA (canonical report + risk flags) ===
+{canonical_report_json}
+
+=== CONSISTENCY CHECK OBSERVATIONS ===
+{consistency_notes_json}
+"""
+
+
 SUMMARY_PROMPT = """\
 === ROLE ===
 You are writing a plain-English credit summary for a loan underwriter,
